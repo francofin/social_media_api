@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-media', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/socialmedia', {
   useFindAndModify: false,
   useNewUrlParser: true,
   useCreateIndex: true,
