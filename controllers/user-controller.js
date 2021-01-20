@@ -43,7 +43,7 @@ const userController = {
 
     updateUser(req, res) {
         User.findOneAndUpdate(
-            {_id: req.params.UserId},
+            {_id: req.params.userId},
             {
                 $set: req.body,
             },
@@ -65,7 +65,7 @@ const userController = {
     },
     deleteUser(req, res) {
         User.findOneAndDelete(
-            {_id: req.params.UserId}
+            {_id: req.params.userId}
         )
         .then((dbUserData) => {
             if(!dbUserData) {
@@ -83,7 +83,7 @@ const userController = {
         });
     },
     addFriend(req, res) {
-        User.findOneAndUpdate({_id: req.params.UserId}, { $addToSet: {friends: req.params.friendId}}, {new: true})
+        User.findOneAndUpdate({_id: req.params.userId}, { $addToSet: {friends: req.params.friendId}}, {new: true})
         .then((dbUserData) => {
             if(!dbUserData) {
                 return res.status(404).json({message: 'No User Found'});
@@ -96,7 +96,7 @@ const userController = {
         });
     },
     removeFriend(req, res) {
-        User.findOneAndUpdate({_id:req.params.UserId}, { $pull: {friends: req.params.friendId}}, {new:true})
+        User.findOneAndUpdate({_id:req.params.userId}, { $pull: {friends: req.params.friendId}}, {new:true})
         .then((dbUserData) => {
             if(!dbUserData) {
                 return res.status(404).json({message: "No User Found"});
